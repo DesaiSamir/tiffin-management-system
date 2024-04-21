@@ -2,13 +2,16 @@
   "name": "@tiffin-management-system/source",
   "version": "0.0.0",
   "license": "MIT",
-  "scripts": {},
+  "scripts": {
+    "dev": "turbo dev"
+  },
   "private": true,
   "dependencies": {
     "next": "14.0.4",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "tslib": "^2.3.0"
+    "tslib": "^2.3.0",
+    "turbo": "^1.13.2"
   },
   "devDependencies": {
     "@nx/cypress": "18.3.3",

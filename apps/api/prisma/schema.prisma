@@ -1,0 +1,112 @@
+// prisma/schema.prisma
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Tenant {
+  id             Int      @id @default(autoincrement())
+  name           String   @unique
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+  deletedAt      DateTime?
+
+  // Define the opposite relation field for MenuItem
+  user           User[]
+}
+
+model User {
+  id             Int      @id @default(autoincrement())
+  tenantId       Int
+  name           String
+  username       String   @unique
+  email          String   @unique
+  password       String
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+  deletedAt      DateTime?
+
+  tenant         Tenant   @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+  order          Order[]
+}
+
+model Order {
+  id             Int      @id @default(autoincrement())
+  orderDate      DateTime @default(now())
+  userId         Int
+  items          Json?
+  combos         Json?
+  totalAmount    Float
+  status         String
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+  deletedAt      DateTime?
+
+  user            User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model ItemType {
+  id             Int       @id @default(autoincrement())
+  name           String
+  quantity       String 
+  price          Float     // Specific price associated with the item type
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+  deletedAt      DateTime?
+
+  items          Item[]    // Define the reverse relation with Item
+}
+
+
+model Item {
+  id             Int       @id @default(autoincrement())
+  name           String
+  description    String?
+  price          Float
+  itemTypeId     Int?
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+  deletedAt      DateTime?
+
+  itemType       ItemType?  @relation(fields: [itemTypeId], references: [id], onDelete: Cascade)
+  comboItems     ComboItem[]
+}
+
+model Combo {
+  id             Int       @id @default(autoincrement())
+  name           String
+  description    String?
+  price          Float
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+  deletedAt      DateTime?
+
+  comboItems     ComboItem[]
+}
+
+model ComboItem {
+  id             Int       @id @default(autoincrement())
+  comboId        Int
+  itemId         Int
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+  deletedAt      DateTime?
+
+  combo          Combo     @relation(fields: [comboId], references: [id], onDelete: Cascade)
+  item           Item      @relation(fields: [itemId], references: [id], onDelete: Cascade)
+}
+
+model DailyMenu {
+  id             Int       @id @default(autoincrement())
+  date           DateTime  @default(now())
+  items          Json?
+  combos         Json?
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+  deletedAt      DateTime?
+}

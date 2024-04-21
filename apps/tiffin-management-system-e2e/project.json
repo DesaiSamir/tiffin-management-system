@@ -1,9 +1,0 @@
-{
-  "name": "tiffin-management-system-e2e",
-  "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "apps/tiffin-management-system-e2e/src",
-  "tags": [],
-  "implicitDependencies": ["tiffin-management-system"],
-  "// targets": "to see all targets run: nx show project tiffin-management-system-e2e --web",
-  "targets": {}
-}
