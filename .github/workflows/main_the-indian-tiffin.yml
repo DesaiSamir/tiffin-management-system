@@ -23,6 +23,7 @@ jobs:
 
       - name: pnpm install, build, and test
         run: |
+          npm i pnpm
           pnpm install
           pnpm run build --if-present
           pnpm run test --if-present
