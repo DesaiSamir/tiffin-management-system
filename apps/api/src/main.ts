@@ -13,6 +13,7 @@ async function bootstrap() {
 
   app.useLogger(app.get(MyLoggerService));
   app.enableCors();
+  AppModule.configureSwagger(app);
   app.setGlobalPrefix('api');
   await app.listen(3003);
 }
