@@ -35,7 +35,7 @@ jobs:
           pwd
 
       - name: Zip artifact for deployment
-        run: zip -r admin-site.zip . -i ./dist/*
+        run: zip admin-site.zip ./apps/admin-site/* -r
 
       - name: Upload artifact for admin-site deployment job
         uses: actions/upload-artifact@v3
