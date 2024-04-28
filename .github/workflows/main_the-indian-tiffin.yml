@@ -30,7 +30,7 @@ jobs:
           pnpm install
           cd apps/admin-site
           echo "Build App"
-          pnpm run build:admin -- --if-present
+          pnpm run build
 
       - name: Zip artifact for deployment
         run: zip admin-site.zip ./dist/* -r
