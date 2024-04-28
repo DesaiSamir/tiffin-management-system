@@ -34,8 +34,8 @@ jobs:
           echo "Install Deps"
           pnpm install
           echo "Build App"
-          pnpm run build --if-present
-          pnpm run test --if-present
+          pnpm run build -- --if-present
+          pnpm run test -- --if-present
           popd
 
       - name: Zip artifact for api deployment
