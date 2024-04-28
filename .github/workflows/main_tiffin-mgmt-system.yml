@@ -29,8 +29,11 @@ jobs:
         shell: bash
         run: |
           pushd './${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}'
-          npm i pnpm
+          echo "Install PNPM"
+          npm i -g pnpm
+          echo "Install Deps"
           pnpm install
+          echo "Build App"
           pnpm run build --if-present
           pnpm run test --if-present
           popd
