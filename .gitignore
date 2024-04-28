@@ -45,3 +45,9 @@ Thumbs.db
 out
 
 .turbo/daemon/
+
+.turbo/cookies/
+
+apps/admin-site/.turbo/
+
+apps/api/.turbo/

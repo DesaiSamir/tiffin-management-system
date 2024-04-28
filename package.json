@@ -3,7 +3,10 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "dev": "turbo dev"
+    "dev": "turbo dev",
+    "build": "turbo build",
+    "build:admin": "turbo --filter admin-site build",
+    "build:api": "turbo --filter api build"
   },
   "private": true,
   "dependencies": {
