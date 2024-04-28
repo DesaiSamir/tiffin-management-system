@@ -28,11 +28,12 @@ jobs:
           npm i -g pnpm
           echo "Install Deps"
           pnpm install
+          cd apps/admin-site
           echo "Build App"
           pnpm run build:admin -- --if-present
 
       - name: Zip artifact for deployment
-        run: zip admin-site.zip ./apps/admin-site/dist/* -r
+        run: zip admin-site.zip ./dist/* -r
 
       - name: Upload artifact for admin-site deployment job
         uses: actions/upload-artifact@v3
