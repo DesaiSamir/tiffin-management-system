@@ -51,7 +51,7 @@ jobs:
       - name: Download artifact from build job
         uses: actions/download-artifact@v3
         with:
-          name: node-app
+          name: admin-site
 
       - name: Unzip artifact for deployment
         run: unzip admin-site.zip
