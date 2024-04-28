@@ -32,7 +32,7 @@ jobs:
           pnpm run build:admin -- --if-present
 
       - name: Zip artifact for deployment
-        run: zip admin-site.zip ./apps/admin-site/* -r
+        run: zip admin-site.zip ./apps/admin-site/dist/* -r
 
       - name: Upload artifact for admin-site deployment job
         uses: actions/upload-artifact@v3
