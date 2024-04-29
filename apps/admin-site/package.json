@@ -6,7 +6,7 @@
   "private": false,
   "scripts": {
     "dev": "vite",
-    "start": "vite preview",
+    "start": "vite preview --port 8080",
     "build": "vite build",
     "lint": "eslint \"src/**/*.{js,jsx,ts,tsx}\"",
     "lint:fix": "eslint --fix \"src/**/*.{js,jsx,ts,tsx}\"",
