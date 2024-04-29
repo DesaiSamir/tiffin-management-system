@@ -25,7 +25,7 @@ jobs:
         shell: bash
         run: |
           echo "Install PNPM"
-          npm i pnpm
+          npm i -g pnpm
           echo "Install Deps"
           pnpm install
           echo "Build App"
