@@ -28,11 +28,14 @@ jobs:
           npm i -g pnpm
           echo "Install Deps"
           pnpm install
-          echo "Build App"
-          pnpm run build
+          cd apps/api
+          npx prisma generate
 
       - name: Zip artifact for deployment
-        run: zip admin-site.zip ./* -r
+        run: |
+          echo "Build App"
+          pnpm run build
+          zip admin-site.zip ./* -r
 
       - name: Upload artifact for admin-site deployment job
         uses: actions/upload-artifact@v3
